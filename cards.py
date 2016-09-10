@@ -44,7 +44,16 @@ def displayHands(playerHand, dealerHand):
         print("-"),
     print("\n")
 
-
+def isBlackJack(playerHand):
+	if(rank(playerHand[0]) == 'A'):
+		if(rank(playerHand[1]) == 'K') or (rank(playerHand[1]) == 'Q') or (rank(playerHand[1]) == 'J'):
+			return 1
+	elif(rank(playerHand[1]) == 'A'):
+		if(rank(playerHand[0]) == 'K') or (rank(playerHand[0]) == 'Q') or (rank(playerHand[0]) == 'J'):
+			return 1
+	else:
+		return 0
+			
 def clearScreen():
     for i in range(100):
         print("\n")

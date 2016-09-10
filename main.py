@@ -1,4 +1,6 @@
 from cards import *
+import sys
+import os
 
 DECK_LENGTH = 52
 SUITS = 'cdhs'
@@ -9,8 +11,12 @@ random.shuffle(deck)
 playerHand = [deck.pop(), deck.pop()]
 dealerHand = [deck.pop(), deck.pop()]
 
+clearScreen()
 displayHands(playerHand, dealerHand)
-# TODO: Check for Blackjack
+if(isBlackJack(playerHand)):
+	print("PLAYER WINS WITH BLACKJACK!")
+	raw_input("Press Enter to Continue")
+	exit()
 # TODO: Check for Ace value (1 or 11)
 playerChoice = raw_input("(h)it or (s)stand?: ")
 while (playerChoice == 'h'):
@@ -30,3 +36,4 @@ if(playerTotal > dealerTotal) and (playerTotal <= 21):
     print("PLAYER WINS")
 else:
     print("PLAYER LOSES")
+raw_input("Press Any key to Continue")
