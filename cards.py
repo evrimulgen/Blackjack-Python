@@ -45,17 +45,24 @@ def handValue(hand):
 
     return total
 
-def displayHands(playerHand, dealerHand):
+def displayHands(playerHand, dealerHand, showDealerCardsFlag):
+    # showDealerCardsFlag: True to show all cards, false otherwise
     print("\nYour cards:")
     for index in range(len(playerHand)):
         print(card(playerHand[index]))
     print("Total: " + str(handValue(playerHand)))
 
-    print("\nDealer's card:")
-    print(card(dealerHand[0]))
-    for index in range(len(card(dealerHand[0])) / 2):
-        print("-"),
-    print("\n")
+    if(showDealerCardsFlag == True):
+        print("\nDealer's cards:")
+        for index in range(len(dealerHand)):
+            print(card(dealerHand[index]))
+        print("Total: " + str(handValue(dealerHand)))
+    else:
+        print("\nDealer's card:")
+        print(card(dealerHand[0]))
+        for index in range(len(card(dealerHand[0])) / 2):
+            print("-"),
+        print("\n")
 
 def isBlackJack(playerHand):
 	if(rank(playerHand[0]) == 'A'):
