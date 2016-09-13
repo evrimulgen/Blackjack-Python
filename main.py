@@ -18,7 +18,6 @@ def playGame():
 		print("PLAYER WINS WITH BLACKJACK!")
 		raw_input("Press Enter to Continue")
 		exit()
-	# TODO: Check for Ace value (1 or 11)
 	playerChoice = raw_input("(h)it or (s)stand?: ")
 	while (playerChoice == 'h'):
 			print("hit!")

@@ -30,6 +30,19 @@ def handValue(hand):
     total = 0
     for index in range(len(hand)):
         total = total + value(hand[index])
+
+    # Checks for Aces in hand, if card == 'A', total is reduced by 10.
+    # If multiple Aces, then it checks if the hand is currently under 21.
+    # If it is, we just break because the score is already valid and does not need further reduction.
+    if (total > 21):
+        for index in range(len(hand)):
+            if(hand[index][0] == 'A'):
+                total -= 10
+            if(total <= 21):
+                break
+            else:
+                continue
+
     return total
 
 def displayHands(playerHand, dealerHand):
