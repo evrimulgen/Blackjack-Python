@@ -12,12 +12,12 @@ def playGame():
 	playerHand = [deck.pop(), deck.pop()]
 	dealerHand = [deck.pop(), deck.pop()]
 
+
 	clearScreen()
 	displayHands(playerHand, dealerHand, False)
 	if(isBlackJack(playerHand)):
 		print("PLAYER WINS WITH BLACKJACK!")
-		raw_input("Press Enter to Continue")
-		exit()
+		return
 	playerChoice = raw_input("(h)it or (s)stand?: ")
 	while (playerChoice == 'h'):
 			print("hit!")
@@ -36,13 +36,12 @@ def playGame():
 	print("Dealer Total: " + str(dealerTotal))
 	if(isBlackJack(dealerHand)):
 		print("DEALER WINS WITH BLACKJACK!")
-		raw_input("Press Enter to Continue")
-		exit()
+		return
 	if(playerTotal > dealerTotal) and (playerTotal <= 21):
 		print("PLAYER WINS")
 	else:
 		print("PLAYER LOSES")
-	raw_input("Press Any key to Continue")
+	return
 
 
 playAgain = 1
