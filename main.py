@@ -12,12 +12,12 @@ def playGame():
 	playerHand = [deck.pop(), deck.pop()]
 	dealerHand = [deck.pop(), deck.pop()]
 
-
 	clearScreen()
 	displayHands(playerHand, dealerHand, False)
 	if(isBlackJack(playerHand)):
 		print("PLAYER WINS WITH BLACKJACK!")
 		return
+	print("AI Hint: " + advice(playerHand))
 	playerChoice = raw_input("(h)it or (s)stand?: ")
 	while (playerChoice == 'h'):
 			print("hit!")

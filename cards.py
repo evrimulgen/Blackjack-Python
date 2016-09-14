@@ -73,6 +73,11 @@ def isBlackJack(playerHand):
 			return 1
 	else:
 		return 0
+
+def advice(playerHand):
+    playerTotal = handValue(playerHand)
+    if(playerTotal <= 16): return "HIT (under 16)"
+    else: return "STAND (over 16)"
 			
 def clearScreen():
     for i in range(100):
