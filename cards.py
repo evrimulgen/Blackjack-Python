@@ -78,6 +78,30 @@ def advice(playerHand):
     playerTotal = handValue(playerHand)
     if(playerTotal <= 16): return "HIT (under 16)"
     else: return "STAND (over 16)"
+
+def bustChance(playerHand):
+    playerTotal = handValue(playerHand)
+    if(playerTotal == 12):
+        return "31"
+    elif(playerTotal == 13):
+        return "39"
+    elif(playerTotal == 14):
+        return "56"
+    elif(playerTotal == 15):
+        return "58"
+    elif(playerTotal == 16):
+        return "62"
+    elif(playerTotal == 17):
+        return "69"
+    elif(playerTotal == 18):
+        return "77"
+    elif(playerTotal == 19):
+        return "85"
+    elif(playerTotal == 20):
+        return "92"
+    else:
+        return "Less than 30"
+
 			
 def clearScreen():
     for i in range(100):

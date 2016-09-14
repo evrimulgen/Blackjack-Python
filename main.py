@@ -17,6 +17,7 @@ def playGame():
 	if(isBlackJack(playerHand)):
 		print("PLAYER WINS WITH BLACKJACK!")
 		return
+	print("Bust-Out Chance: " + bustChance(playerHand) + "%")
 	print("AI Hint: " + advice(playerHand))
 	playerChoice = raw_input("(h)it or (s)stand?: ")
 	while (playerChoice == 'h'):
