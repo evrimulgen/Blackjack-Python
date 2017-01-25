@@ -1,9 +1,19 @@
+#!/usr/bin/env python
+
 from cards import *
 from sys import exit
+import os
+import platform
 
 DECK_LENGTH = 52
 SUITS = 'cdhs'
 RANKS = '23456789TJQKA'
+
+def clearScreen():
+	if (platform.system() == "Windows"):
+		os.system('cls')
+	else:
+		os.system('clear')
 
 def playGame():
 	deck = list(''.join(card) for card in itertools.product(RANKS, SUITS))
@@ -21,10 +31,10 @@ def playGame():
 	print("AI Hint: " + advice(playerHand))
 	playerChoice = raw_input("(h)it or (s)stand?: ")
 	while (playerChoice == 'h'):
-			print("hit!")
-			playerHand.append(deck.pop())
-			displayHands(playerHand, dealerHand, False)
-			playerChoice = raw_input("(h)it or (s)stand?: ")
+		print("hit!")
+		playerHand.append(deck.pop())
+		displayHands(playerHand, dealerHand, False)
+		playerChoice = raw_input("(h)it or (s)stand?: ")
 
 	print("stand!")
 	while(handValue(dealerHand) <= 16):
@@ -33,6 +43,7 @@ def playGame():
 	dealerTotal = handValue(dealerHand)
 	clearScreen()
 	displayHands(playerHand, dealerHand, True)
+	print("\n\n---- RESULTS ----")
 	print("Player Total: " + str(playerTotal))
 	print("Dealer Total: " + str(dealerTotal))
 	if(isBlackJack(dealerHand)):
@@ -40,13 +51,18 @@ def playGame():
 		return
 	if(playerTotal > dealerTotal) and (playerTotal <= 21):
 		print("PLAYER WINS")
+	elif (dealerTotal > 21) and (playerTotal <= 21):
+		print("PLAYER WINS")
 	else:
 		print("PLAYER LOSES")
 	return
 
+def main():
+	playAgain = 'y'
+	while(playAgain == 'y'):
+		playGame()
+		playAgain = raw_input("\nPlay Again? (y/n): ")
+	clearScreen()
 
-playAgain = 1
-while(playAgain):
-	playGame()
-	playAgain = raw_input("Play Again? (1/0): ")
-	
+if __name__ == '__main__':
+    main()
